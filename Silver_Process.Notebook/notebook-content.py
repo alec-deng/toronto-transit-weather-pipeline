@@ -33,11 +33,10 @@ from pyspark.sql import functions as F
 
 # CELL ********************
 
-# 1. Read the JSON
+# 1. Read the Raw Weather JSON Data
 df_weather_raw = spark.read.option("multiline", "true").json("Files/raw_weather_toronto_2025.json")
 
-# 2. "Explode" the hourly arrays into rows
-# Note: Spark now preserves the names 'time', 'temperature_2m', and 'precipitation' inside the zip
+# 2. Explode the hourly arrays into rows
 df_weather_hourly = df_weather_raw.select(
     F.explode(F.arrays_zip(
         F.col("hourly.time"), 
@@ -54,12 +53,12 @@ df_weather_hourly = df_weather_raw.select(
 df_weather_silver = df_weather_hourly.withColumn(
     "datetime", 
     F.to_timestamp(F.col("datetime_str"), "yyyy-MM-dd'T'HH:mm")
-).select("datetime", "temp_c", "precip_mm") # Keep only the clean columns
+).select("datetime", "temp_c", "precip_mm")
 
 # 4. Save as a Silver Table
 df_weather_silver.write.format("delta").mode("overwrite").saveAsTable("silver_toronto_weather")
 
-print("✅ Weather Data converted. The 'datetime' column is now a formal Timestamp!")
+print("Weather Data converted!")
 
 # METADATA ********************
 
@@ -77,7 +76,7 @@ df_bus = spark.read.format("csv").option("header", "true").load("Files/raw_ttc_b
 for col in df_bus.columns:
     df_bus = df_bus.withColumnRenamed(col, col.lower().replace(" ", "_"))
 
-# 3. FIX THE DATETIME
+# 3. Fix the datetime
 df_bus_cleaned = df_bus.withColumn(
     "datetime", 
     F.to_timestamp(
@@ -100,7 +99,7 @@ df_bus_cleaned = df_bus_cleaned.drop("date", "time")
 # 6. Save with overwriteSchema
 df_bus_cleaned.write.format("delta").mode("overwrite").saveAsTable("silver_ttc_bus_delays")
 
-print("✅ Success! Time is no longer haunted by current dates.")
+print("TTC Bus Data converted!")
 
 # METADATA ********************
 
@@ -118,7 +117,7 @@ df_subway = spark.read.format("csv").option("header", "true").load("Files/raw_tt
 for col in df_subway.columns:
     df_subway = df_subway.withColumnRenamed(col, col.lower().replace(" ", "_"))
 
-# 3. FIX THE DATETIME
+# 3. Fix the datetime
 df_subway_cleaned = df_subway.withColumn(
     "datetime", 
     F.to_timestamp(
@@ -141,7 +140,7 @@ df_subway_cleaned = df_subway_cleaned.drop("date", "time")
 # 6. Save with overwriteSchema
 df_subway_cleaned.write.format("delta").mode("overwrite").saveAsTable("silver_ttc_subway_delays")
 
-print("✅ Success! Time is no longer haunted by current dates.")
+print("TTC Subway Data converted!")
 
 # METADATA ********************
 
