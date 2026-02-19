@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Notebook",
+    "displayName": "Aggregate_Hourly_TTC_Data"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "eede7e71-6478-9376-4895-493ceea9c737"
+  }
+}
