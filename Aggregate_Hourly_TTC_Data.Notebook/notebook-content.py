@@ -24,28 +24,19 @@
 
 from pyspark.sql import functions as F
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
 def aggregate_data_hourly(table_name, saved_table_name):
     # 1. Load your data from lakehouse
     df = spark.read.table(table_name)
 
     # 2. Filter, Select, and Aggregate to Hourly
     hourly_ttc_delays = (df
-        .select("datetime", "min_delay", "min_gap")
+        .select("datetime", "min_delay")
         .filter(F.col("min_delay") > 0)
         .withColumn("hourly_timestamp", F.date_trunc("hour", F.col("datetime")))
         .groupBy("hourly_timestamp")
         .agg(
             F.sum("min_delay").alias("total_delay_mins"),
-            F.sum("min_gap").alias("total_gap_mins"),
+            F.avg("min_delay").alias("avg_delay_mins"),
             F.count("*").alias("incident_count") # Added to see how many delays happened per hour
         )
         .sort("hourly_timestamp")
