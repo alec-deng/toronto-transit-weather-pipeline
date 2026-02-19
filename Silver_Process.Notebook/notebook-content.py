@@ -69,78 +69,41 @@ print("Weather Data converted!")
 
 # CELL ********************
 
-# 1. Read the Raw TTC Bus Data 
-df_bus = spark.read.format("csv").option("header", "true").load("Files/raw_ttc_bus_2025.csv")
+def convert_ttc_csv(csv_path, table_name):
+    # 1. Read the Raw TTC Data 
+    df = spark.read.format("csv").option("header", "true").load(csv_path)
 
-# 2. Standardize column names
-for col in df_bus.columns:
-    df_bus = df_bus.withColumnRenamed(col, col.lower().replace(" ", "_"))
+    # 2. Standardize column names
+    for col in df.columns:
+        df = df.withColumnRenamed(col, col.lower().replace(" ", "_"))
 
-# 3. Fix the datetime
-df_bus_cleaned = df_bus.withColumn(
-    "datetime", 
-    F.to_timestamp(
-        F.concat(
-            F.split(F.col("date"), "T")[0],
-            F.lit(" "), 
-            F.col("time")
-        ), 
-        "yyyy-MM-dd HH:mm"
+    # 3. Fix the datetime
+    df_cleaned = df.withColumn(
+        "datetime", 
+        F.to_timestamp(
+            F.concat(
+                F.split(F.col("date"), "T")[0],
+                F.lit(" "), 
+                F.col("time")
+            ), 
+            "yyyy-MM-dd HH:mm"
+        )
     )
-)
 
-# 4. Clean up types for other columns
-df_bus_cleaned = df_bus_cleaned.withColumn("min_delay", F.col("min_delay").cast("int")) \
-                               .withColumn("min_gap", F.col("min_gap").cast("int"))
+    # 4. Clean up types for other columns
+    df_cleaned = df_cleaned.withColumn("min_delay", F.col("min_delay").cast("int")) \
+                                .withColumn("min_gap", F.col("min_gap").cast("int"))
 
-# 5. Drop old columns
-df_bus_cleaned = df_bus_cleaned.drop("date", "time")
+    # 5. Drop old columns
+    df_cleaned = df_cleaned.drop("date", "time")
 
-# 6. Save with overwriteSchema
-df_bus_cleaned.write.format("delta").mode("overwrite").saveAsTable("silver_ttc_bus_delays")
+    # 6. Save table in delta format
+    df_cleaned.write.format("delta").mode("overwrite").saveAsTable(table_name)
 
-print("TTC Bus Data converted!")
+convert_ttc_csv("Files/raw_ttc_bus_2025.csv", "silver_ttc_bus_delays")
+convert_ttc_csv("Files/raw_ttc_subway_2025.csv", "silver_ttc_subway_delays")
 
-# METADATA ********************
-
-# META {
-# META   "language": "python",
-# META   "language_group": "synapse_pyspark"
-# META }
-
-# CELL ********************
-
-# 1. Read the Raw TTC Subway Data 
-df_subway = spark.read.format("csv").option("header", "true").load("Files/raw_ttc_subway_2025.csv")
-
-# 2. Standardize column names
-for col in df_subway.columns:
-    df_subway = df_subway.withColumnRenamed(col, col.lower().replace(" ", "_"))
-
-# 3. Fix the datetime
-df_subway_cleaned = df_subway.withColumn(
-    "datetime", 
-    F.to_timestamp(
-        F.concat(
-            F.split(F.col("date"), "T")[0],
-            F.lit(" "), 
-            F.col("time")
-        ), 
-        "yyyy-MM-dd HH:mm"
-    )
-)
-
-# 4. Clean up types for other columns
-df_subway_cleaned = df_subway_cleaned.withColumn("min_delay", F.col("min_delay").cast("int")) \
-                               .withColumn("min_gap", F.col("min_gap").cast("int"))
-
-# 5. Drop old columns
-df_subway_cleaned = df_subway_cleaned.drop("date", "time")
-
-# 6. Save with overwriteSchema
-df_subway_cleaned.write.format("delta").mode("overwrite").saveAsTable("silver_ttc_subway_delays")
-
-print("TTC Subway Data converted!")
+print("TTC Delay Data converted!")
 
 # METADATA ********************
 
