@@ -1,0 +1,94 @@
+table gold_ttc_weather_impact
+	lineageTag: 1eaaec44-fffb-4a78-852f-180f3b7db20f
+	sourceLineageTag: [dbo].[gold_ttc_weather_impact]
+
+	column datetime
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 2e323822-2b46-41db-b1ed-94af6c71b594
+		sourceLineageTag: datetime
+		summarizeBy: none
+		sourceColumn: datetime
+
+		annotation SummarizationSetBy = Automatic
+
+	column bus_total_delay
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: f51c97c2-9bf0-4e2c-847b-7479c014431f
+		sourceLineageTag: bus_total_delay
+		summarizeBy: sum
+		sourceColumn: bus_total_delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column bus_avg_delay
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3ac48d17-6ec5-4bbe-8a71-fab942332060
+		sourceLineageTag: bus_avg_delay
+		summarizeBy: sum
+		sourceColumn: bus_avg_delay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column subway_total_delay
+		dataType: int64
+		formatString: 0
+		sourceProviderType: bigint
+		lineageTag: 87d102be-3c6f-4f88-9698-4a4675507b27
+		sourceLineageTag: subway_total_delay
+		summarizeBy: sum
+		sourceColumn: subway_total_delay
+
+		annotation SummarizationSetBy = Automatic
+
+	column subway_avg_delay
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 4e43ed90-c3f9-4522-ad07-0b7681b7a15e
+		sourceLineageTag: subway_avg_delay
+		summarizeBy: sum
+		sourceColumn: subway_avg_delay
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column temp_c
+		dataType: double
+		sourceProviderType: float
+		lineageTag: d1224d16-2151-45aa-b952-6987da01876b
+		sourceLineageTag: temp_c
+		summarizeBy: sum
+		sourceColumn: temp_c
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column precip_mm
+		dataType: double
+		sourceProviderType: float
+		lineageTag: 3337f976-f3b2-43a3-9e5e-b93fbae41957
+		sourceLineageTag: precip_mm
+		summarizeBy: sum
+		sourceColumn: precip_mm
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition gold_ttc_weather_impact = entity
+		mode: directLake
+		source
+			entityName: gold_ttc_weather_impact
+			schemaName: dbo
+			expressionSource: DatabaseQuery
+
+	annotation PBI_ResultType = Table
+

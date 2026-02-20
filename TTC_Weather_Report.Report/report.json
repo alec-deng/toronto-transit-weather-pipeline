@@ -1,0 +1,76 @@
+{
+  "config": "{\"version\":\"5.70\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY26SU02\",\"version\":{\"visual\":\"2.6.0\",\"report\":\"3.1.0\",\"page\":\"2.3.0\"},\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "pods": [
+    {
+      "boundSection": "19aeb31f0a3419dfaa9e",
+      "config": "{\"acceptsFilterContext\":1}",
+      "name": "33b974b60e7811cb4f0e"
+    }
+  ],
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY26SU02",
+            "path": "BaseThemes/CY26SU02.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "19aeb31f0a3419dfaa9e",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"1bac72f5c21460a3afcb\",\"layouts\":[{\"id\":0,\"position\":{\"x\":375.8042686100989,\"y\":359.8125976054139,\"z\":3,\"width\":904.1957313899011,\"height\":360.47891723060906,\"tabOrder\":3}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"gold_ttc_weather_impact.temp_c\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.bus_avg_delay)\"},{\"queryRef\":\"Sum(gold_ttc_weather_impact.subway_avg_delay)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"temp_c\"},\"Name\":\"gold_ttc_weather_impact.temp_c\",\"NativeReferenceName\":\"temp_c\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"bus_avg_delay\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.bus_avg_delay)\",\"NativeReferenceName\":\"Sum of bus_avg_delay\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"subway_avg_delay\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.subway_avg_delay)\",\"NativeReferenceName\":\"Sum of subway_avg_delay\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"bus_avg_delay\"}},\"Function\":0}}}]},\"drillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":\"6d1233df6ad675872123\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"precip_mm\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Right\":{\"Literal\":{\"Value\":\"0L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":1,\"isLockedInViewMode\":true,\"ordinal\":1}]",
+          "height": 360.48,
+          "width": 904.20,
+          "x": 375.80,
+          "y": 359.81,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"5375f4013303ccb23470\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":0,\"width\":375.8042686100989,\"height\":359.8125976054139,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"X\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.precip_mm)\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.bus_total_delay)\"}],\"Category\":[{\"queryRef\":\"gold_ttc_weather_impact.datetime\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Select\":[{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.precip_mm)\",\"NativeReferenceName\":\"Sum of precip_mm\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"bus_total_delay\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.bus_total_delay)\",\"NativeReferenceName\":\"Sum of bus_total_delay\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"datetime\"},\"Name\":\"gold_ttc_weather_impact.datetime\",\"NativeReferenceName\":\"datetime\"}]},\"drillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"hasDefaultSort\":true,\"objects\":{\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"863f367ca5fce715b79a\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"datetime\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":0},{\"name\":\"fc1e5273614faed2d482\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"precip_mm\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Right\":{\"Literal\":{\"Value\":\"0L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":1,\"isLockedInViewMode\":true,\"ordinal\":1},{\"name\":\"7bec4bac877e8f323f19\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"bus_total_delay\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":2},{\"name\":\"412c549fb7e46e371c4d\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"precip_mm\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":3}]",
+          "height": 359.81,
+          "width": 375.80,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"7c56d75b1f0c52719e6a\",\"layouts\":[{\"id\":0,\"position\":{\"x\":375.8042686100989,\"y\":0,\"z\":2,\"width\":904.1957313899011,\"height\":359.8125976054139,\"tabOrder\":2}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"gold_ttc_weather_impact.datetime\",\"active\":true}],\"Y2\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.precip_mm)\"}],\"Y\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.bus_total_delay)\"},{\"queryRef\":\"Sum(gold_ttc_weather_impact.subway_total_delay)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"datetime\"},\"Name\":\"gold_ttc_weather_impact.datetime\",\"NativeReferenceName\":\"datetime\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.precip_mm)\",\"NativeReferenceName\":\"Sum of precip_mm\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"subway_total_delay\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.subway_total_delay)\",\"NativeReferenceName\":\"Sum of subway_total_delay\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"bus_total_delay\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.bus_total_delay)\",\"NativeReferenceName\":\"Sum of bus_total_delay\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"datetime\"}}}]},\"drillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"hasDefaultSort\":true}}",
+          "filters": "[{\"name\":\"46d7278964b6f1cd6d79\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"precip_mm\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Right\":{\"Literal\":{\"Value\":\"0L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":1,\"isLockedInViewMode\":true,\"ordinal\":1}]",
+          "height": 359.81,
+          "width": 904.20,
+          "x": 375.80,
+          "y": 0.00,
+          "z": 2.00
+        },
+        {
+          "config": "{\"name\":\"d5cb7ae6bdd80da8ccc7\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":359.8125976054139,\"z\":1,\"width\":375.8042686100989,\"height\":360.47891723060906,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"scatterChart\",\"projections\":{\"Category\":[{\"queryRef\":\"gold_ttc_weather_impact.datetime\",\"active\":true}],\"X\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.precip_mm)\",\"active\":true}],\"Y\":[{\"queryRef\":\"Sum(gold_ttc_weather_impact.subway_total_delay)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"datetime\"},\"Name\":\"gold_ttc_weather_impact.datetime\",\"NativeReferenceName\":\"datetime\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.precip_mm)\",\"NativeReferenceName\":\"Sum of precip_mm\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"subway_total_delay\"}},\"Function\":0},\"Name\":\"Sum(gold_ttc_weather_impact.subway_total_delay)\",\"NativeReferenceName\":\"Sum of subway_total_delay\"}]},\"drillFilterOtherVisuals\":true,\"filterSortOrder\":3,\"objects\":{\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}}}}]}}}",
+          "filters": "[{\"name\":\"fc0e3b0cf52f79c01b64\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"datetime\"}},\"type\":\"Categorical\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":0},{\"name\":\"1f5235da3028a8fd4925\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"precip_mm\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"g\",\"Entity\":\"gold_ttc_weather_impact\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":1,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"g\"}},\"Property\":\"precip_mm\"}},\"Right\":{\"Literal\":{\"Value\":\"0L\"}}}}}]},\"type\":\"Advanced\",\"howCreated\":1,\"isLockedInViewMode\":true,\"ordinal\":1},{\"name\":\"be6e9226459731856a77\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"precip_mm\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":2},{\"name\":\"70252cb9f236a2018ffe\",\"expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"gold_ttc_weather_impact\"}},\"Property\":\"subway_total_delay\"}},\"Function\":0}},\"type\":\"Advanced\",\"howCreated\":0,\"isHiddenInViewMode\":false,\"ordinal\":3}]",
+          "height": 360.48,
+          "width": 375.80,
+          "x": 0.00,
+          "y": 359.81,
+          "z": 1.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

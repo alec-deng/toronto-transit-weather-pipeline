@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "TTC_Weather_Report"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "2bf5ce9f-a11c-8fda-4b21-9d2f42d120c6"
+  }
+}
