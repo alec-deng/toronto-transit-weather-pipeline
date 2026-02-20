@@ -37,7 +37,7 @@ import os
 # CELL ********************
 
 # Fetching the entire year of 2025 for Toronto
-weather_2025_url = "https://archive-api.open-meteo.com/v1/archive?latitude=43.70&longitude=-79.42&start_date=2025-01-01&end_date=2025-12-31&hourly=temperature_2m,precipitation,rain,snowfall&timezone=America%2FNew_York"
+weather_2025_url = "https://archive-api.open-meteo.com/v1/archive?latitude=43.65&longitude=-79.38&start_date=2025-01-01&end_date=2025-12-31&hourly=temperature_2m,precipitation,rain,snowfall&timezone=America/Toronto"
 
 print("Fetching full year 2025 weather data...")
 response = requests.get(weather_2025_url)
