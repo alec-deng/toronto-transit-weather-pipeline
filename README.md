@@ -28,7 +28,6 @@ The project implements a **Medallion Architecture** to ensure data quality and l
 
 
 ## Deployment & Usage
-This repository is designed for easy replication in any Microsoft Fabric environment.
 
 ### **Prerequisites**
 * An active **Microsoft Fabric** workspace.
