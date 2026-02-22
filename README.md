@@ -22,7 +22,7 @@ The project implements a **Medallion Architecture** to ensure data quality and l
 
 
 ## Key Insights from Analysis
-* **The "Precipitation Tax":** Trend analysis confirms a positive correlation between precipitation volume (mm) and total bus delay minutes.
+* **The Rain-Delay Correlation:** Trend analysis confirms a positive correlation between precipitation volume (mm) and total bus delay minutes.
 * **The Freezing Threshold:** Significant delay spikes correlate with temperatures between **-5°C and 5°C**, indicating mechanical and operational vulnerability during freeze-thaw cycles.
 * **Resilience Gap:** While both systems are affected, surface-level bus routes show significantly higher sensitivity to heavy rain events compared to the subway system.
 
