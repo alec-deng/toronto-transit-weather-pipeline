@@ -5,7 +5,7 @@
 This project analyzes the impact of weather (precipitation and temperature) on Toronto Transit Commission (TTC) service efficiency. By automating the ingestion of transit and meteorological data, the pipeline quantifies how urban mobility is affected by environmental conditions.
 
 
-### Architecture: The Medallion Pattern
+## Architecture: The Medallion Pattern
 The project implements a **Medallion Architecture** to ensure data quality and lineage as it moves from raw API calls to analytical insights.
 
 * **Bronze (Raw):** Ingests raw JSON (Weather) and CSV (TTC) data via Python `requests` directly into the Lakehouse `Files` section.
@@ -13,7 +13,7 @@ The project implements a **Medallion Architecture** to ensure data quality and l
 * **Gold (Curated):** Hourly aggregations and a complex outer-join between Bus, Subway, and Weather datasets. Uses `F.coalesce` to maintain a unified temporal index.
 
 
-### Tech Stack & Techniques
+## Tech Stack & Techniques
 * **Orchestration:** **Fabric Data Factory Pipelines** for automated sequential notebook execution.
 * **Data Processing:** **PySpark (Spark SQL)** for scalable ETL and complex data transformations.
 * **Storage:** **Delta Lake** tables for ACID-compliant storage and schema evolution.
@@ -21,13 +21,13 @@ The project implements a **Medallion Architecture** to ensure data quality and l
 * **Data Sources:** [City of Toronto Open Data](https://open.toronto.ca/) & [Open-Meteo API](https://open-meteo.com/).
 
 
-### Key Insights from Analysis
+## Key Insights from Analysis
 * **The "Precipitation Tax":** Trend analysis confirms a positive correlation between precipitation volume (mm) and total bus delay minutes.
 * **The Freezing Threshold:** Significant delay spikes correlate with temperatures between **-5°C and 5°C**, indicating mechanical and operational vulnerability during freeze-thaw cycles.
 * **Resilience Gap:** While both systems are affected, surface-level bus routes show significantly higher sensitivity to heavy rain events compared to the subway system.
 
 
-### Deployment & Usage
+## Deployment & Usage
 This repository is designed for easy replication in any Microsoft Fabric environment.
 
 ### **Prerequisites**
